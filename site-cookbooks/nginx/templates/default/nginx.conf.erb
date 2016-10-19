@@ -11,17 +11,41 @@ events {
   worker_connections  <%= node[:nginx][:worker_connections] %>;
 }
 
-# 20161017 ここから
 
 http {
     include /etc/nginx/mime.types;
     default_type application/octet-stream;
-    server {
-        listen <%= node["nginx"]["port"] %>;
-        server_name 192.168.33.10;
-        location / {
-            root /usr/share/nginx/html;
-            index index.html index.htm;
-        }
-    }
+
+    # access_log as main
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+
+    <% unless node[:nginx][:disable_access_log] -%>
+    access_log	<%= node[:nginx][:log_dir] %>/access.log main;
+    <% end %>
+
+    sendfile on;
+    tcp_nopush on;
+    tcp_nodelay on;
+
+    <% if node[:nginx][:keepalive] == "on" %>
+    keepalive_timeout  <%= node[:nginx][:keepalive_timeout] %>;
+    <% end %>
+
+    gzip  <%= node[:nginx][:gzip] %>;
+    <% if node[:nginx][:gzip] == "on" %>
+    gzip_http_version <%= node[:nginx][:gzip_http_version] %>;
+    gzip_comp_level <%= node[:nginx][:gzip_comp_level] %>;
+    gzip_proxied <%= node[:nginx][:gzip_proxied] %>;
+    gzip_types <%= node[:nginx][:gzip_types].join(' ') %>;
+    <% node[:nginx][:gzip_disables].each do |gd| %>
+    gzip_disable "<%= gd %>";
+    <% end %>
+    <% end %>
+
+    server_names_hash_bucket_size <%= node[:nginx][:server_names_hash_bucket_size] %>;
+
+    #include <%= node[:nginx][:dir] %>/conf.d/*.conf;
+    include <%= node[:nginx][:dir] %>/sites-enabled/*;
 } 
