@@ -1,6 +1,5 @@
 server {
   listen 80 default_server;
-  # defaultはすべてのドメインを拒否する
   server_name _;
   deny all;
 }

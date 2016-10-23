@@ -1,12 +1,15 @@
 # socketに流す。リバースプロキシ設定。puma等と同じにする必要あり。
 upstream sample-app {
+  # railsとsocket通信するファイル、サーバーと思って後ろに投げるだけ。
+  # rails側がこのファイルをウォッチする
   server unix:<%= node['nginx']['sock'] %>;
 }
 
 server {
   listen <%= node['nginx']['port'] %>;
-  server_name <= node['nginx']['server'] %>;
-
+  # serverのホスト名
+  server_name <= node['nginx']['server_name'] %>;
+  # rootディレクトリ
   root <%= node['nginx']['root_dir']/node['nginx']['app'] %>;
   access_log <%= node['nginx']['log_dir']/node['nginx']['app']_access.log %>;
   error_log <%= node['nginx']['log_dir']/node['nginx']['app']_error.log %>;
@@ -25,7 +28,7 @@ server {
      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
      # ヘッダ書き換え
      proxy_set_header Host $http_host;
-     # upstreamブロックのバックエンドにリクエストを中継
+     # upstreamブロックのバックエンドにリクエストを中継。なので、sample-app
      proxy_pass http://sample-app;
   }
 
