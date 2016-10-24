@@ -1,0 +1,101 @@
+#!/usr/bin/env bash
+#
+# puma - this script starts and stops the puma daemon
+#
+# chkconfig:   - 70 20
+# description:  Puma is a Ruby web server.
+# processname: puma
+
+. /etc/rc.d/init.d/functions
+
+APP_NAME=sample-app
+APP_DIR=/home/rails/${APP_NAME}
+PUMA_SOCKET=/var/tmp/${APP_NAME}.sock
+RUBY_PATH=/usr/local/rbenv/shims
+ENVIRONMENT=production
+PID_DIR=/var/tmp/pids
+PUMA_PID_FILE=$PID_DIR/puma-${APP_NAME}.pid
+SLEEP_TIME=1
+AS_USER=root
+
+PATH=$RUBY_PATH:/usr/local/bin:$PATH
+
+mkdir -p $PID_DIR
+
+cd $APP_DIR
+
+# check if puma process is running
+puma_is_running() {
+    if [ -S $PUMA_SOCKET ] ; then
+      if [ -e $PUMA_PID_FILE ] ; then
+        if cat $PUMA_PID_FILE | xargs ps -p > /dev/null ; then
+          return 0
+        elif cat $PUMA_PID_FILE | xargs pgrep -P > /dev/null ; then
+          return 0
+        else
+          echo "No puma process found"
+        fi
+      else
+        echo "No puma pid file found"
+      fi
+    else
+      echo "No puma socket found"
+    fi
+
+    return 1
+}
+
+start_puma() {
+    daemon --user $AS_USER bundle exec puma --daemon --environment $ENVIRONMENT --bind unix://$PUMA_SOCKET --pidfile $PUMA_PID_FILE
+}
+
+get_status() {
+    status -p $PUMA_PID_FILE $APP_NAME
+}
+
+
+case "$1" in
+  start)
+    echo "Starting puma..."
+    rm -f $PUMA_SOCKET
+    start_puma
+    echo "done"
+  ;;
+
+  stop)
+    echo "Stopping puma..."
+    kill -s SIGTERM `cat $PUMA_PID_FILE`
+    rm -f $PUMA_PID_FILE
+    rm -f $PUMA_SOCKET
+
+    echo "done"
+    ;;
+
+  restart)
+    if puma_is_running ; then
+      echo "Hot-restarting puma..."
+      kill -s SIGUSR2 `cat $PUMA_PID_FILE`
+      echo "Doublechecking the process restart..."
+      sleep $SLEEP_TIME
+      if puma_is_running ; then
+        echo "done"
+        exit 0
+      else
+        echo "Puma restart failed :/"
+      fi
+    fi
+
+    echo "Trying cold reboot"
+    start_puma
+    ;;
+
+  status)
+    get_status
+    exit $?
+    ;;
+
+  
+  *)
+    echo "Usage: script/puma.sh {start|stop|restart}" 
+    ;;
+ esac
