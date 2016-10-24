@@ -8,7 +8,8 @@
 #
 
 puma_app_service = "puma_#{node.set['project']['name']}"
- 
+
+# template xxx で でファイルを置く場所を決める。中で読み込むテンプレートを。
 template "/etc/init.d/#{puma_app_service}" do
   source "puma_app.erb"
   owner 'root'
