@@ -12,11 +12,15 @@
       "ruby-build_url": "https://github.com/sstephenson/ruby-build"
     }
   },
+  "run_list":"recipe[＜クックブック名＞::＜レシピ名＞, レシピ名省略するとdefault.rbに",
   "run_list": [
     "recipe[nginx]",
+    "recipe[init_script]",
     "recipe[nodejs]",
     "recipe[ruby-env]",
     "recipe[postgresql]",
     "recipe[imagemagick]"
   ]
 }
+
+

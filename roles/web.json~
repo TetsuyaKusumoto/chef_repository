@@ -13,8 +13,8 @@
     }
   },
   "run_list": [
-    "recipe[yum-epel]",
     "recipe[nginx]",
+    "recipe[init_script]",
     "recipe[nodejs]",
     "recipe[ruby-env]",
     "recipe[postgresql]",
