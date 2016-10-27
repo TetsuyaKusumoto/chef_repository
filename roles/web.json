@@ -13,6 +13,7 @@
     }
   },
   "run_list":"recipe[＜クックブック名＞::＜レシピ名＞, レシピ名省略するとdefault.rbに",
+  "run_list":"ruby-envの中でruby, ruby-build, rbenvhashをインストールしている",
   "run_list": [
     "recipe[nginx]",
     "recipe[init_script]",
