@@ -73,4 +73,4 @@ default[:nginx][:sock] = "/var/tmp/sample-app.sock"
 default[:nginx][:server] = "www.denish.tech"
 default[:nginx][:port] = 80
 default[:nginx][:app] = "sample-app"
-defualt[:nginx][:client_max_body_size] = "100m"
+default[:nginx][:client_max_body_size] = "100m"

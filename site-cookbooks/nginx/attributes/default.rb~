@@ -25,16 +25,16 @@ default[:nginx][:version]      = "0.8.54"
 case platform
 when "debian","ubuntu"
   default[:nginx][:dir]        = "/etc/nginx"
-  default[:nginx][:root_dir]    = "/home/Sites/www"
-  default[:nginx][:log_dir]    = "/home/Sites/log"
+  default[:nginx][:root_dir]    = "/var/www"
+  default[:nginx][:log_dir]    = "/var/log"
   default[:nginx][:user]       = "www-data"
   default[:nginx][:binary]     = "/usr/sbin/nginx"
   default[:nginx][:init_style] = "runit"
   default[:nginx][:cache_expire] = "1m"
 else
   default[:nginx][:dir]        = "/etc/nginx"
-  default[:nginx][:root_dir]    = "/home/Sites/www"
-  default[:nginx][:log_dir]    = "/home/Sites/log"
+  default[:nginx][:root_dir]    = "/var/www"
+  default[:nginx][:log_dir]    = "/var/log"
   default[:nginx][:user]       = "www-data"
   default[:nginx][:binary]     = "/usr/sbin/nginx"
   default[:nginx][:init_style] = "init"
@@ -69,3 +69,8 @@ default[:nginx][:server_names_hash_bucket_size] = 64
 
 default[:nginx][:disable_access_log] = false
 
+default[:nginx][:sock] = "/var/tmp/sample-app.sock"
+default[:nginx][:server] = "www.denish.tech"
+default[:nginx][:port] = 80
+default[:nginx][:app] = "sample-app"
+defualt[:nginx][:client_max_body_size] = "100m"

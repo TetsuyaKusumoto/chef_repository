@@ -10,6 +10,9 @@
       "version": "2.2.2",
       "rbenv_url":      "https://github.com/sstephenson/rbenv",
       "ruby-build_url": "https://github.com/sstephenson/ruby-build"
+    },
+    "project": {
+      "name": "sample-app"
     }
   },
   "run_list":"recipe[＜クックブック名＞::＜レシピ名＞, レシピ名省略するとdefault.rbに",

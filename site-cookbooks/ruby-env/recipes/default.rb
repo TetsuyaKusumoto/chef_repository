@@ -43,7 +43,7 @@ end
 git "/home/#{node['ruby-env']['user']}/.rbenv/plugins/ruby-build" do
   repository node['ruby-env']['ruby-build_url']
   action :sync
-  user   node['rubaay-env']['user']
+  user   node['ruby-env']['user']
   group  node['ruby-env']['group']
 end
 

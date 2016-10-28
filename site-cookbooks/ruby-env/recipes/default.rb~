@@ -9,7 +9,7 @@
 
 # install openssl-devel and sqlite-devel
 %w{readline-devel openssl-devel sqlite-devel}.each do |pkg|
-  # packageはインストール
+  # packageはインストール。このpackageとかgitをresourceという。
   package pkg do
     action :install
   end
