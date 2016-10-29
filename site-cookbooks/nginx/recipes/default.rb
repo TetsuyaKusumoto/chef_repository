@@ -41,7 +41,7 @@ template 'nginx.repo' do
 end
 
 template 'default' do
-  path    '/etc/nginx/sites-available'
+  path    '/etc/nginx/sites-available/default'
   source  'default.erb'
   mode    0644
   user    'root'
@@ -49,7 +49,7 @@ template 'default' do
 end
 
 template 'sample-app' do
-  path    '/etc/nginxd/sites-available'
+  path    '/etc/nginx/sites-available/sample-app'
   source  'sample-app.erb'
   mode    0644
   user    'root'

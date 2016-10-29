@@ -8,11 +8,11 @@ upstream sample-app {
 server {
   listen <%= node['nginx']['port'] %>;
   # serverのホスト名
-  server_name <= node['nginx']['server_name'] %>;
+  server_name <%= node['nginx']['server_name'] %>;
   # rootディレクトリ
-  root <%= node['nginx']['root_dir']/node['nginx']['app'] %>;
-  access_log <%= node['nginx']['log_dir']/node['nginx']['app']_access.log %>;
-  error_log <%= node['nginx']['log_dir']/node['nginx']['app']_error.log %>;
+  root <%= node['nginx']['root_dir'] %>/<%= node['nginx']['app'] %>;
+  access_log <%= node['nginx']['log_dir'] %>/<%= node['nginx']['app'] %>_access.log;
+  error_log <%= node['nginx']['log_dir'] %>/<%= node['nginx']['app'] %>_error.log;
   client_max_body_size <%= node['nginx']['client_max_body_size'] %>;
   error_page 404 /404.html;
   error_page 500 502 503 504 /500.html;
