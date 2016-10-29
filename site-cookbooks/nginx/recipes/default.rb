@@ -24,6 +24,7 @@ end
 # templateは設定ファイル
 template "nginx.conf" do
   path "/etc/nginx/nginx.conf"
+  source "nginx.conf.erb"
   owner "root"
   group "root"
   mode 644
@@ -38,3 +39,20 @@ template 'nginx.repo' do
   user    'root'
   group   'root'
 end
+
+template 'default' do
+  path    '/etc/nginx/sites-available'
+  source  'default.erb'
+  mode    0644
+  user    'root'
+  group   'root'
+end
+
+template 'sample-app' do
+  path    '/etc/nginxd/sites-available'
+  source  'sample-app.erb'
+  mode    0644
+  user    'root'
+  group   'root'
+end
+
