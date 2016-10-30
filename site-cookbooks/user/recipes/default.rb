@@ -7,15 +7,16 @@
 # All rights reserved - Do Not Redistribute
 #
 
-group node["user"] do
-  group_name node["user"]
+group 'deploy' do
+  group_name "deploy"
   action     [:create]
 end
 
-user node["user"] do
-  comment  "#{node["user"]} user"
-  group    node["user"]
-  home     "/home/#{node["user"]}"
+user 'deploy' do
+  comment  "deploy user"
+  group    "deploy"
+  home     "/home/deploy"
   supports :manage_home => true
   action   [:create, :manage]
+  shell "/bin/bash"
 end
