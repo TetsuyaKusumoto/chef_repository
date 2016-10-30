@@ -1,4 +1,4 @@
-# socketに流す。リバースプロキシ設定。puma等と同じにする必要あり。
+# socketに流す。後ろのproxy_passと同じ名前にする。。puma等と同じにする必要あり。
 upstream sample-app {
   # railsとsocket通信するファイル、サーバーと思って後ろに投げるだけ。
   # rails側がこのファイルをウォッチする

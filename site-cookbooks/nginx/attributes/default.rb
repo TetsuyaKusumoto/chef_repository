@@ -69,8 +69,12 @@ default[:nginx][:server_names_hash_bucket_size] = 64
 
 default[:nginx][:disable_access_log] = false
 
-default[:nginx][:sock] = "/var/tmp/sample-app.sock"
-default[:nginx][:server] = "www.denish.tech"
+default[:nginx][:sock] = "/var/www/sample-app/staging/shared/tmp/puma.sock"
+#default[:nginx][:sock] = "/var/tmp/sample-app.sock"
+
+default[:nginx][:server] = "192.168.33.11"
+#default[:nginx][:server] = "www.denish.tech"
+
 default[:nginx][:port] = 80
 default[:nginx][:app] = "sample-app"
 default[:nginx][:client_max_body_size] = "100m"

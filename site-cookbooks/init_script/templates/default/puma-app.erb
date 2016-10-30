@@ -9,12 +9,12 @@
 . /etc/rc.d/init.d/functions
 
 APP_NAME=sample-app
-#APP_DIR=/home/rails/${APP_NAME}
-APP_DIR=/var/www/${APP_NAME}
+#APP_DIR=/home/rails/${APP_NAME}/
+APP_DIR=/var/www/${APP_NAME}/current
 PUMA_SOCKET=/var/tmp/${APP_NAME}.sock
 #RUBY_PATH=/usr/local/rbenv/shims
 RUBY_PATH=/home/vagrant/.rbenv/shims
-ENVIRONMENT=production
+ENVIRONMENT=staging
 PID_DIR=/var/tmp/pids
 PUMA_PID_FILE=$PID_DIR/puma-${APP_NAME}.pid
 SLEEP_TIME=1
