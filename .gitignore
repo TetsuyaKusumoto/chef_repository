@@ -1,3 +1,5 @@
 # cookbook フォルダは要らない
 cookbook/
 *~
+authorized_keys
+id_rsa
