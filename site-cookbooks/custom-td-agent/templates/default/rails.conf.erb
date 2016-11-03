@@ -1,4 +1,12 @@
-<match access.log>
+<source>
+  type tail
+  path /var/log/nginx/access.log
+  format nginx
+  pos_file /var/log/fluentd/messages.pos
+  tag nginx_access.log
+</source>
+
+<match nginx_access.log>
   type copy # 分岐するプラグイン
   <store>
     type elasticsearch
