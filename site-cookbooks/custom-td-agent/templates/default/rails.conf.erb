@@ -5,7 +5,8 @@
     host 153.122.31.24
     port 9200
 
-    logstash_format true
+    logstash_format true # Kibana用にlogstash フォーマットで出力　index名：logstash-YYYY.mm.dd
+                         # ecord（ログ）に@timestampとして時刻が追加 
     logstash_prefix nginx_access_log
 
     buffer_type memory
