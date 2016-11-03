@@ -1,0 +1,31 @@
+<match access.log>
+  type copy # 分岐するプラグイン
+  <store>
+    type elasticsearch
+    host 153.122.31.24
+    port 9200
+
+    logstash_format true
+    logstash_prefix nginx_access_log
+
+    buffer_type memory
+    buffer_chunk_limit 1m
+    buffer_queue_limit 128
+
+    flush_interval 2s
+    retry_limit 17
+
+  </store>
+  <store>
+    type flowcounter # 流量を計測するプラグイン
+    count_keys *
+    unit minute
+    aggregate all
+    tag flowcount
+  </store>
+</match>
+<match flowcount>
+  type file
+  path /var/log/td-agent/traffic
+  time_slice_format %Y%m%d%H%M
+</match>
