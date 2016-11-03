@@ -9,3 +9,11 @@
 
 include_recipe "nginx"
 include_recipe "td-agent"
+
+template "rails.conf" do
+  path	"/etc/td-agent/conf.d/rails.conf"
+  source "rails.conf.erb"
+  mode 0644
+  user "root"
+  group "root"
+end
