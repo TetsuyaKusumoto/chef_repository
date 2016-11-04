@@ -1,5 +1,17 @@
 # cookbook フォルダは要らない
-cookbook/
+cookbooks/
 *~
 authorized_keys
 id_rsa
+
+.vagrant
+Vagrantfile*
+/cookbooks
+
+# Bundler
+bin/*
+.bundle/*
+
+.kitchen/
+.kitchen.local.yml
+.org
