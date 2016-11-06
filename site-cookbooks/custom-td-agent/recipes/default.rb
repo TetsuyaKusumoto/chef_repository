@@ -10,6 +10,14 @@
 include_recipe "nginx"
 include_recipe "td-agent"
 
+directory '/etc/td-agent/conf.d' do
+  owner 'root'
+  group 'root'
+  mode 0644
+  recursive true
+end
+
+
 template "rails.conf" do
   path	"/etc/td-agent/conf.d/rails.conf"
   source "rails.conf.erb"
