@@ -77,8 +77,8 @@ ChallengeResponseAuthentication no
 #KerberosUseKuserok yes
 
 # GSSAPI options
-#GSSAPIAuthentication no
-GSSAPIAuthentication yes
+GSSAPIAuthentication no
+#GSSAPIAuthentication yes
 #GSSAPICleanupCredentials yes
 GSSAPICleanupCredentials yes
 #GSSAPIStrictAcceptorCheck yes
@@ -119,7 +119,7 @@ X11Forwarding yes
 #ClientAliveInterval 0
 #ClientAliveCountMax 3
 #ShowPatchLevel no
-#UseDNS yes
+UseDNS no
 #PidFile /var/run/sshd.pid
 #MaxStartups 10:30:100
 #PermitTunnel no

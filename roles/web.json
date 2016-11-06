@@ -10,7 +10,7 @@
       "version": "2.2.2",
       "rbenv_url":      "https://github.com/sstephenson/rbenv",
       "ruby-build_url": "https://github.com/sstephenson/ruby-build",
-      "install_path": "/usr/bin"
+      "install_path": "/usr/local"
     },
     "project": {
       "name": "sample-app"
@@ -25,7 +25,7 @@
     "recipe[ruby-env]",
     "recipe[postgresql]",
     "recipe[imagemagick]",
-    "recipe[custom-td-agent]"
+    "recipe[custom-td-agent]",
   ]
 }
 

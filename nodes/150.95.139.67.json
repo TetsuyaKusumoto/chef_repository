@@ -1,0 +1,11 @@
+{
+  "environment": "local-staging",
+  "run_list": [
+    "role[base]",
+    "role[web]",
+    "role[db]"
+  ],
+  "automatic": {
+    "ipaddress": "150.95.139.67"
+  }
+}

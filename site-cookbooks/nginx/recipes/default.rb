@@ -38,7 +38,23 @@ template 'nginx.repo' do
   mode    0644
   user    'root'
   group   'root'
+  action :create
 end
+
+directory '/etc/nginx/sites-available' do
+  owner 'root'
+  group 'root'
+  mode 0644
+  recursive true
+end
+
+directory '/etc/nginx/sites-enabled' do
+  owner 'root'
+  group 'root'
+  mode 0644
+  recursive true
+end
+
 
 template 'default' do
   path    '/etc/nginx/sites-available/default'

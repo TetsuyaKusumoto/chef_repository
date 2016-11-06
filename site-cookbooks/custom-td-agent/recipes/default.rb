@@ -17,3 +17,13 @@ template "rails.conf" do
   user "root"
   group "root"
 end
+
+#td_agent_gem "elasticsearch" do
+  #version "0.2.0"
+#  plugin true
+#end
+#td_agent_gem "flowcounter" do
+  #version "0.2.0"
+#  plugin true
+#end
+

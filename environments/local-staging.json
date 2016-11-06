@@ -4,10 +4,10 @@
   "chef_type":   "environment",
   "json_class":  "Chef::Environment",
   "default_attributes": {
-    "user": "vagrant",
+    "user": "root",
     "ruby-env": {
-      "user":    "vagrant",
-      "group":   "vagrant"
+      "user":    "root",
+      "group":   "root"
     }
   },
   "override_attributes": {}
