@@ -1,0 +1,14 @@
+{
+  "name":        "staging",
+  "description": "virtual machine staging environment",
+  "chef_type":   "environment",
+  "json_class":  "Chef::Environment",
+  "default_attributes": {
+    "user": "root",
+    "ruby-env": {
+      "user":    "root",
+      "group":   "root"
+    }
+  },
+  "override_attributes": {}
+}
