@@ -8,6 +8,7 @@ upstream sample-app {
 server {
   listen <%= node['nginx']['port'] %>;
   # serverのホスト名
+  # test <%= node['hostname'] %>
   server_name <%= node['nginx']['server_name'] %>;
   # rootディレクトリ
   root <%= node['nginx']['root_dir'] %>/<%= node['nginx']['app'] %>;

@@ -1,0 +1,8 @@
+{
+  "run_list":[
+    "recipe[test]"
+  ],
+  "autmatic": {
+    "hostname": "testhostname"
+  }
+}

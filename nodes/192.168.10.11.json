@@ -19,6 +19,7 @@
     "recipe[user::vagrant_user]"
   ],
   "automatic": {
-    "ipaddress": "192.168.10.11"
+    "ipaddress": "192.168.10.11",
+    "hostname": "testhostname"
   }
 }
