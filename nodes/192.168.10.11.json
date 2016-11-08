@@ -15,7 +15,8 @@
   "run_list": [
     "role[base]",
     "role[web]",
-    "role[db]"
+    "role[db]",
+    "recipe[user::vagrant_user]"
   ],
   "automatic": {
     "ipaddress": "192.168.10.11"
