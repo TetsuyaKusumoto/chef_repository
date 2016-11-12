@@ -9,6 +9,7 @@
     "recipe[time-zone]",
     "recipe[user]",
     "recipe[git]",
-    "recipe[td-agent]"
+    "recipe[td-agent]",
+    "recipe[base::network]"
   ]
 }

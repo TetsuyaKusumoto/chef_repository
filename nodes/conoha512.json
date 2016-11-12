@@ -1,0 +1,28 @@
+{
+  "environment": "staging",
+  "authorization": {
+        "sudo": {
+            "groups": ["deploy"],
+            "users": [ "deploy"],
+            "passwordless": true,
+            "sudoers_defaults": [
+                "env_reset",
+                "mail_badpass",
+                "secure_path=\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\""
+            ]
+        }
+  },
+  "run_list": [
+    "role[base]",
+    "role[web]",
+    "role[db]",
+    "recipe[user::vagrant_user]"
+  ],
+  "automatic": {
+    "ipaddress": "192.168.10.11",
+    "hostname": "testhostname"
+  }
+  "network":{
+    "hostname": "www.kusumoto-staging.xyz"
+  }
+}
