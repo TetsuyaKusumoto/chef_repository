@@ -2,6 +2,7 @@ DEPENDENCIES
   build-essential
   git
   imagemagick
+  iptables
   nodejs
   openssl (~> 2.0.0)
   postgresql
@@ -28,6 +29,7 @@ GRAPH
     7-zip (>= 0.0.0)
   chef-sugar (3.4.0)
   chef_gem (0.1.0)
+  compat_resource (12.16.2)
   dmg (3.0.0)
   git (5.0.1)
     build-essential (>= 0.0.0)
@@ -36,6 +38,8 @@ GRAPH
   homebrew (2.1.2)
     build-essential (>= 2.1.2)
   imagemagick (0.2.3)
+  iptables (3.0.1)
+    compat_resource (>= 12.14.3)
   java (1.42.0)
     apt (>= 0.0.0)
     homebrew (>= 0.0.0)
