@@ -1,5 +1,5 @@
 <source>
-  type tail
+  @type tail
   path /var/log/nginx/access.log
   format nginx
   pos_file /var/log/fluentd/nginx_access.pos
@@ -7,7 +7,7 @@
 </source>
 
 <match nginx_access.log>
-  type copy # 分岐するプラグイン
+  @type copy # 分岐するプラグイン
   <store>
     type elasticsearch
     host 153.122.31.24
@@ -34,7 +34,7 @@
   </store>
 </match>
 <match flowcount>
-  type file
+  @type file
   path /var/log/td-agent/traffic
   time_slice_format %Y%m%d%H%M
 </match>
