@@ -16,13 +16,15 @@
     "role[base]",
     "role[web]",
     "role[db]",
-    "recipe[user::vagrant_user]"
   ],
   "automatic": {
     "ipaddress": "192.168.10.11",
     "hostname": "testhostname"
-  }
+  },
   "network":{
     "hostname": "www.kusumoto-staging.xyz"
+  },
+  "hosts":{
+    "hostname: "www.kusumoto-staging.xyz"
   }
 }
