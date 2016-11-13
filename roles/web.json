@@ -25,7 +25,8 @@
     "recipe[ruby-env]",
     "recipe[postgresql]",
     "recipe[imagemagick]",
-    "recipe[custom-td-agent]"
+    "recipe[custom-td-agent]",
+    "recipe[custom-iptables]"
   ]
 }
 

@@ -13,6 +13,7 @@ cookbook 'build-essential'
 #cookbook 'nginx', '~> 2.7.4'
 cookbook 'openssl', '~> 2.0.0'
 
+cookbook 'iptables'
 #cookbook 'ruby_build'
 #cookbook 'ruby_rbenv', github: "fnichol/chef-rbenv"
 
