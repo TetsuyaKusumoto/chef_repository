@@ -17,4 +17,4 @@ bin/*
 .org
 
 user/
-custome-iptables/
+custom-iptables/
