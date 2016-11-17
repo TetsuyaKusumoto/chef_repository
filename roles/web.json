@@ -20,6 +20,7 @@
   "run_list":"ruby-envの中でruby, ruby-build, rbenvhashをインストールしている",
   "run_list": [
     "recipe[nginx]",
+    "recipe[rails_env]",
     "recipe[init_script]",
     "recipe[nodejs]",
     "recipe[ruby-env]",
